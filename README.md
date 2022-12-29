@@ -14,3 +14,28 @@
 - 문제 난이도는 브론즈 1 ~ 골드4 정도로 난이도가 높지 않은 문제 위주로 선택
 - 해당 깃허브에서 정리해둔 문제를 주마다 선별, 백준 그룹에 업로드 후 문제 풀기 
   - https://github.com/tony9402/baekjoon
+
+## Python Input 처리
+- 한줄, 공백 처리, 데이터의 갯수가 정해져 있을 경우
+```
+N, M = map(int, input().split())
+```
+
+- 1차원 배열로 입력받기
+```
+arr = list(map(int, input().split()) 
+```
+
+- N행으로 이루어진 2차원 배열 입력
+```
+N = int(input()) # 행렬의 크기
+
+arr = [list(map(int, input().split())) for _ in range(N)]
+```
+
+### Input 성능 개선 ( 빠른 입력이 필요할 경우 )
+- sys 라이브러리를 활용하여 input() 함수 대신에 아래와 같이 사용
+```
+import sys
+N, M = map(int, sys.stdin.readline().split())
+```
