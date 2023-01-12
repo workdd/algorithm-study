@@ -2,7 +2,6 @@ import sys
 
 D, P = map(int, sys.stdin.readline().strip().split())
 
-PIPES = []
 DP = [0 for _ in range(D+1)]
 
 for i in range(P):
