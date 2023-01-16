@@ -12,7 +12,9 @@ for _ in range(P):
             continue
 
         new_val = min(C, dp[idx])
-        dp[idx + L] = max(new_val, dp[idx + L])
+        if dp[idx + L] < new_val:
+            dp[idx + L] = new_val
 
-    dp[L] = max(C, dp[L])
+    if dp[L] < C:
+        dp[L] = C
 print(dp[D])
