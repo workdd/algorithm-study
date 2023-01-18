@@ -1,51 +1,54 @@
-def stackDFS():
-    stack = []
-    stack.append(V)
+def stackDFS(V):
+    stack = [V]
+    visited = []
 
-    while len(stack) != len(graph.keys()):
-        nodes = list(graph[stack[-1]])
-        for node in nodes:
-            if not node in stack:
-                stack.append(node)
-                break
+    while stack:
+        node = stack.pop()
+
+        if node not in visited:
+            visited.append(node)
+
+            nextNodes = list(graph[node]).copy()
+            nextNodes.sort()
+            nextNodes.reverse()
+            for nextNode in nextNodes:
+                stack.append(nextNode)
+
+    print(' '.join(str(e) for e in visited))
+    return
+
     
-    print(' '.join(str(e) for e in stack))
-
-def recursiveDFS(value):
-    print(value, end = ' ')
-
-    nodes = graph.get(value)
-    for node in nodes:
-        if visit[node] == 0:
-            visit[node] = 1
-            recursiveDFS(node)
-            break
+def queueBFS(V):
+    queue = [V]
+    visited = [V]
     
-def queueBFS():
-    print()
+    while queue:
+        V = queue.pop(0)
+        print(V, end = ' ')
+
+        nextNodes = list(graph[V]).copy()
+        nextNodes.sort()
+        for node in nextNodes:
+            if not node in visited:
+                queue.append(node)
+                visited.append(node)
+
 # 정점의 개수 N, 간선의 개수 M, 탐색 시작 정점 V
 N, M, V = map(int, input().split())
-# recursiveDFS 노드 방문 확인 리스트
-visit = [0] * (N + 1)
-visit[V] = 1
 
-# 인접 리스트(Linked List)
 graph = {}
 
-# _는 값 무시의 의미
 for _ in range(M):
     x, y = map(int, input().split())
     if x not in graph.keys():
-        graph[x] = set([y])
+        graph[x] = [y]
     else:
-        graph[x].add(y)
+        graph[x].append(y)
     if y not in graph.keys():
-        graph[y] = set([x])
+        graph[y] = [x]
     else:
-        graph[y].add(x)
+        graph[y].append(x)
 
-print(graph)
-
-stackDFS()
-recursiveDFS(V)
+stackDFS(V)
+queueBFS(V)
 print()
