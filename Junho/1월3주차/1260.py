@@ -8,6 +8,9 @@ def stackDFS(V):
         if node not in visited:
             visited.append(node)
 
+            if node not in graph.keys():
+                break
+            
             nextNodes = list(graph[node]).copy()
             nextNodes.sort()
             nextNodes.reverse()
@@ -23,15 +26,18 @@ def queueBFS(V):
     visited = [V]
     
     while queue:
-        V = queue.pop(0)
-        print(V, end = ' ')
+        node = queue.pop(0)
+        print(node, end = ' ')
 
-        nextNodes = list(graph[V]).copy()
+        if node not in graph.keys():
+            break
+
+        nextNodes = list(graph[node]).copy()
         nextNodes.sort()
-        for node in nextNodes:
-            if not node in visited:
-                queue.append(node)
-                visited.append(node)
+        for nextNode in nextNodes:
+            if not nextNode in visited:
+                queue.append(nextNode)
+                visited.append(nextNode)
 
 # 정점의 개수 N, 간선의 개수 M, 탐색 시작 정점 V
 N, M, V = map(int, input().split())
