@@ -58,5 +58,6 @@ ipt = [1,2,3]
 copied_ipt = copy.deepcopy(ipt)
 ```
 ### 사용시 이점
-- python의 경우 list, dictionary, dequeue등 일반적인 '=' 기호로 복사 시 주소값을 복사하여, 복사한 값을 변경할 경우 원본값이 변경됨 따라서 원본값을 유지하고, 복사본만 변경해야할 때 deepcopy 이용
+- python의 경우 list, dictionary, dequeue등 일반적인 '=' 기호로 복사 시 주소값을 복사하여, 복사한 값을 변경할 경우 원본값이 변경됨. <br/>
+따라서 원본값을 유지하고, 복사본만 변경해야할 때 deepcopy 이용
 
