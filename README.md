@@ -46,6 +46,11 @@ N, M = map(int, sys.stdin.readline().split())
 ```
 from collections import deque
 deq = deque([1,2,3,4])
+
+#사용가능 함수
+deq.rotate(1)
+deq.popleft()
+deq.appendleft(num)
 ```
 ### 사용시 이점
 - 배열안 추가와 삭제를 O(1) 시간복잡도로 처리 가능, python의 리스트로 풀 경우 O(N)의 시간복잡도
